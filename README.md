@@ -263,6 +263,6 @@ Licensed under the **MIT License** — free to use, modify, and distribute.
 
 <div align="center">
 
-Made with ❤️ by <a href="https://github.com/Manaswi-Nimje">Manaswi Nimje</a>
+Made with by <a href="https://github.com/Manaswi-Nimje">Manaswi Nimje</a>
 
 </div>
