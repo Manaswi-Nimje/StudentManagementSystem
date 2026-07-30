@@ -531,7 +531,7 @@ Licensed under the **MIT License** — free to use, modify, and distribute.
 
 <div align="center">
 
-**Made with ❤️ by [Manaswi Nimje](https://github.com/Manaswi-Nimje)**
+**Made by [Manaswi Nimje](https://github.com/Manaswi-Nimje)**
 
 ⭐ If this project helped you, consider giving it a star!
 
