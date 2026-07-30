@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="./ScreenShots/Landing-page.png" alt="Gradebook — Student Management System" width="850"/>
 
 # 🎓 Gradebook — Student Management System
 
