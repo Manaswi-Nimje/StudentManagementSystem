@@ -1,0 +1,74 @@
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <span class="brand-mark">GB</span>
+      <div class="brand-text">
+        <h1>Gradebook</h1>
+        <p>Student Records</p>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <span class="nav-label">Records</span>
+
+      <a routerLink="/dashboard/overview" routerLinkActive="active" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="10" width="4" height="8" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="8" y="5" width="4" height="13" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="2" width="4" height="16" rx="1" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Overview</span>
+      </a>
+
+      <a routerLink="/dashboard/students" routerLinkActive="active" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2.5" y="3" width="15" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 7.5H17.5" stroke="currentColor" stroke-width="1.6"/><path d="M6 3V7.5" stroke="currentColor" stroke-width="1.6"/></svg>
+        <span>Student list</span>
+      </a>
+
+      <a routerLink="/dashboard/users" routerLinkActive="active" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="7" cy="6.5" r="2.8" stroke="currentColor" stroke-width="1.6"/><path d="M2 17c0-3 2.2-5 5-5s5 2 5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="15" cy="7" r="2.2" stroke="currentColor" stroke-width="1.6"/><path d="M12.8 11.2c1.9.3 3.4 1.9 3.7 4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Accounts</span>
+      </a>
+
+      <a routerLink="/dashboard/add-student" routerLinkActive="active" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M10 4V16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4 10H16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Add student</span>
+      </a>
+
+      <span class="nav-label">Account</span>
+
+      <a routerLink="/profile" routerLinkActive="active" class="nav-link">
+        <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6.5" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 17c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Profile lookup</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-foot">
+      <p>Every mark, one ledger.</p>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">{{ userRole() }}</p>
+        <h2>{{ pageTitle() }}</h2>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-chip">
+          <span class="admin-avatar">{{ userInitial() }}</span>
+          <div>
+            <strong>{{ userName() }}</strong>
+            <span>{{ userEmail() }}</span>
+          </div>
+        </div>
+        <button class="logout-btn" (click)="logout()" title="Sign out">Log out</button>
+      </div>
+    </header>
+
+    <section class="content">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+
+</div>

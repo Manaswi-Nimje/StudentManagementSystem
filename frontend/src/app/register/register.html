@@ -1,0 +1,109 @@
+<div class="auth-screen">
+
+  <div class="auth-panel">
+    <a routerLink="/" class="brand">
+      <span class="brand-mark">GB</span>
+      <div class="brand-text">
+        <strong>Gradebook</strong>
+        <span>Student Records Portal</span>
+      </div>
+    </a>
+
+    <blockquote>
+      "Every mark, one ledger. Set up your staff account in under a minute."
+    </blockquote>
+    <span class="quote-attr">— Office of the Registrar</span>
+  </div>
+
+  <div class="auth-form-wrap">
+    <div class="auth-form">
+      <div class="auth-head">
+        <h1>Create your account</h1>
+        <p>Register for staff access to the student ledger.</p>
+      </div>
+
+      <div class="alert alert-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <form (ngSubmit)="submit()" #f="ngForm" novalidate>
+        <label class="field">
+          <span>Full name</span>
+          <input
+            type="text"
+            name="fullName"
+            autocomplete="name"
+            placeholder="e.g. Priya Sharma"
+            [(ngModel)]="fullName"
+            required
+          >
+          <small class="field-error" *ngIf="fieldErrors['fullName']">{{ fieldErrors['fullName'] }}</small>
+        </label>
+
+        <label class="field">
+          <span>Username</span>
+          <input
+            type="text"
+            name="username"
+            autocomplete="username"
+            placeholder="e.g. priya_registrar"
+            [(ngModel)]="username"
+            required
+          >
+          <small class="field-error" *ngIf="fieldErrors['username']">{{ fieldErrors['username'] }}</small>
+        </label>
+
+        <label class="field">
+          <span>Email</span>
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="you@institution.edu"
+            [(ngModel)]="email"
+            required
+          >
+          <small class="field-error" *ngIf="fieldErrors['email']">{{ fieldErrors['email'] }}</small>
+        </label>
+
+        <label class="field">
+          <span>Password</span>
+          <div class="password-wrap">
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              autocomplete="new-password"
+              placeholder="At least 6 characters"
+              [(ngModel)]="password"
+              required
+            >
+            <button type="button" class="toggle-visibility" (click)="showPassword = !showPassword">
+              {{ showPassword ? 'Hide' : 'Show' }}
+            </button>
+          </div>
+          <small class="field-error" *ngIf="fieldErrors['password']">{{ fieldErrors['password'] }}</small>
+        </label>
+
+        <label class="field">
+          <span>Confirm password</span>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            name="confirmPassword"
+            autocomplete="new-password"
+            placeholder="Re-enter your password"
+            [(ngModel)]="confirmPassword"
+            required
+          >
+          <small class="field-error" *ngIf="passwordsMismatch">Passwords do not match.</small>
+        </label>
+
+        <button type="submit" class="btn-primary btn-block" [disabled]="submitting">
+          {{ submitting ? 'Creating account…' : 'Create account' }}
+        </button>
+      </form>
+
+      <p class="switch-line">
+        Already have an account? <a routerLink="/login">Sign in</a>
+      </p>
+    </div>
+  </div>
+
+</div>

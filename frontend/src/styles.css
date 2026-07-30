@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Design tokens — "Gradebook" identity
+   A student record system should feel like a well-kept academic ledger:
+   ink navy structure, chalkboard-green as the working accent, brass for
+   distinction/highlights, and garnet for corrections/destructive actions —
+   literally the red pen. Data (IDs, marks, dates) is set in a tabular
+   monospace, the way a register lists roll numbers.
+   ========================================================================== */
+
+:root{
+  /* Core palette */
+  --ink:        #16233B;   /* primary structural navy */
+  --ink-700:    #22334F;
+  --ink-600:    #2E4266;
+  --paper:      #F4F5F1;   /* cool paper background, not cream */
+  --paper-card: #FFFFFF;
+  --line:       #E1E4DC;   /* hairline rule color */
+
+  --accent:       #1F6F54; /* chalkboard green — primary working accent */
+  --accent-600:   #195A44;
+  --accent-100:   #E4F1EC;
+
+  --brass:        #B8863B; /* highlight / distinction */
+  --brass-100:    #F6EEDD;
+
+  --garnet:       #A63446; /* corrections / destructive */
+  --garnet-100:   #F7E7E9;
+
+  --ink-muted:    #5A6478;
+  --ink-faint:    #8890A0;
+
+  /* Type */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Layout */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-card: 0 1px 2px rgba(22,35,59,0.06), 0 8px 24px rgba(22,35,59,0.06);
+  --shadow-pop:  0 12px 32px rgba(22,35,59,0.14);
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  margin:0 !important;
+  padding:0 !important;
+  overflow-x:hidden;
+  overflow-y:auto;
+  background:var(--paper);
+  font-family:var(--font-body);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+app-root{
+  display:block;
+  width:100%;
+  min-height:100vh;
+  margin:0;
+  padding:0;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+::selection{
+  background:var(--accent-100);
+  color:var(--accent-600);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+button{
+  font-family:inherit;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+  }
+}

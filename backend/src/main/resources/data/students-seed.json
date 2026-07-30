@@ -1,0 +1,14 @@
+[
+  { "studName": "Aarav Sharma",    "course": "Computer Science",         "marks": 92.45, "admissionDate": "2024-01-15" },
+  { "studName": "Priya Verma",     "course": "Information Technology",   "marks": 78.25, "admissionDate": "2023-11-10" },
+  { "studName": "Rohan Patil",     "course": "Electronics Engineering",  "marks": 85.80, "admissionDate": "2024-02-20" },
+  { "studName": "Sneha Kulkarni",  "course": "Mechanical Engineering",   "marks": 67.40, "admissionDate": "2023-12-05" },
+  { "studName": "Manas Joshi",     "course": "Artificial Intelligence",  "marks": 95.10, "admissionDate": "2024-03-01" },
+  { "studName": " Isha Reddy",     "course": "Computer Science",         "marks": 88.60, "admissionDate": "2024-01-22" },
+  { "studName": "Kabir Malhotra",  "course": "Civil Engineering",        "marks": 72.30, "admissionDate": "2023-10-18" },
+  { "studName": "Ananya Iyer",     "course": "Information Technology",   "marks": 90.75, "admissionDate": "2024-04-09" },
+  { "studName": "Devansh Gupta",   "course": "Electronics Engineering",  "marks": 64.90, "admissionDate": "2023-09-27" },
+  { "studName": "Riya Nair",       "course": "Artificial Intelligence",  "marks": 97.20, "admissionDate": "2024-05-14" },
+  { "studName": "Vivaan Choudhary","course": "Mechanical Engineering",   "marks": 58.75, "admissionDate": "2023-08-30" },
+  { "studName": "Meera Pillai",    "course": "Computer Science",         "marks": 81.10, "admissionDate": "2024-02-11" }
+]

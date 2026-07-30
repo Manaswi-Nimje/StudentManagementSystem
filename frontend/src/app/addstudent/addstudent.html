@@ -1,0 +1,60 @@
+<div class="form-card">
+
+  <div class="form-head">
+    <h2>{{ editId ? 'Edit student record' : 'Add a student' }}</h2>
+    <p>{{ editId ? 'Update the details below and save the change.' : 'Fill in the details to enrol a new student in the ledger.' }}</p>
+  </div>
+
+  <div class="state-card" *ngIf="loadError">
+    <h3>Couldn't load this record</h3>
+    <p>The student may not exist anymore.</p>
+    <a routerLink="/dashboard/students" class="btn-secondary">Back to ledger</a>
+  </div>
+
+  <form [formGroup]="studentForm" (ngSubmit)="submit()" *ngIf="!loadError" novalidate>
+
+    <div class="field">
+      <label for="studName">Full name</label>
+      <input id="studName" type="text" placeholder="e.g. Ananya Sharma" formControlName="studName">
+      <small class="error" *ngIf="f['studName'].touched && f['studName'].invalid">
+        Enter the student's full name (at least 2 characters).
+      </small>
+    </div>
+
+    <div class="field">
+      <label for="course">Course</label>
+      <input id="course" type="text" placeholder="e.g. B.Sc Computer Science" formControlName="course">
+      <small class="error" *ngIf="f['course'].touched && f['course'].invalid">
+        Course is required.
+      </small>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="marks">Marks (out of 100)</label>
+        <input id="marks" type="number" min="0" max="100" step="0.5" placeholder="0–100" formControlName="marks">
+        <small class="error" *ngIf="f['marks'].touched && f['marks'].invalid">
+          Enter a valid mark between 0 and 100.
+        </small>
+      </div>
+
+      <div class="field">
+        <label for="admissionDate">Admission date</label>
+        <input id="admissionDate" type="date" formControlName="admissionDate">
+        <small class="error" *ngIf="f['admissionDate'].touched && f['admissionDate'].invalid">
+          Admission date is required.
+        </small>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/dashboard/students" class="btn-secondary">Cancel</a>
+      <button type="submit" class="btn-primary" [disabled]="submitting">
+        {{ submitting ? 'Saving…' : (editId ? 'Save changes' : 'Add student') }}
+      </button>
+    </div>
+
+    <p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+  </form>
+
+</div>

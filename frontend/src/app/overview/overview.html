@@ -1,0 +1,89 @@
+<div class="overview">
+
+  <ng-container *ngIf="!loading && !error && totalStudents > 0">
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <span class="stat-label">Enrolled students</span>
+        <span class="stat-value">{{ totalStudents }}</span>
+      </div>
+      <div class="stat-card accent-brass">
+        <span class="stat-label">Average marks</span>
+        <span class="stat-value">{{ averageMarks }}</span>
+      </div>
+      <div class="stat-card accent-green">
+        <span class="stat-label">Distinctions (85+)</span>
+        <span class="stat-value">{{ topPerformers }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Courses offered</span>
+        <span class="stat-value">{{ courseSlices.length }}</span>
+      </div>
+    </div>
+
+    <div class="panel-grid">
+
+      <section class="panel">
+        <h3>Course distribution</h3>
+        <div class="donut-wrap">
+          <svg viewBox="0 0 100 100" class="donut">
+            <circle cx="50" cy="50" r="42" fill="none" stroke="var(--line)" stroke-width="12"/>
+            <circle
+              *ngFor="let slice of courseSlices; trackBy: trackByCourse"
+              cx="50" cy="50" r="42" fill="none"
+              [attr.stroke]="slice.color"
+              stroke-width="12"
+              [attr.stroke-dasharray]="slice.dashLength + ' ' + (circumference - slice.dashLength)"
+              [attr.stroke-dashoffset]="slice.dashOffset"
+              transform="rotate(-90 50 50)"
+              stroke-linecap="butt"
+            />
+          </svg>
+          <div class="donut-center">
+            <strong>{{ totalStudents }}</strong>
+            <span>total</span>
+          </div>
+        </div>
+        <ul class="legend">
+          <li *ngFor="let slice of courseSlices; trackBy: trackByCourse">
+            <span class="dot" [style.background]="slice.color"></span>
+            <span class="legend-course">{{ slice.course }}</span>
+            <span class="legend-pct">{{ slice.pct }}%</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3>Recently admitted</h3>
+        <ul class="recent-list">
+          <li *ngFor="let s of recent; trackBy: trackByStudent">
+            <span class="grade-badge" [attr.data-grade]="gradeLetter(s.marks)">{{ gradeLetter(s.marks) }}</span>
+            <div class="recent-info">
+              <strong>{{ s.studName }}</strong>
+              <span>{{ s.course }} &middot; {{ s.admissionDate }}</span>
+            </div>
+            <span class="recent-marks">{{ s.marks }}</span>
+          </li>
+        </ul>
+        <a routerLink="/dashboard/students" class="panel-link">View full ledger →</a>
+      </section>
+
+    </div>
+  </ng-container>
+
+  <div class="state-card" *ngIf="loading">
+    <p>Loading the ledger…</p>
+  </div>
+
+  <div class="state-card" *ngIf="!loading && error">
+    <h3>Couldn't reach the server</h3>
+    <p>The overview needs the backend API running. Check that it's reachable, then refresh.</p>
+  </div>
+
+  <div class="state-card" *ngIf="!loading && !error && totalStudents === 0">
+    <h3>No students yet</h3>
+    <p>Add your first student to see enrollment stats here.</p>
+    <a routerLink="/dashboard/add-student" class="btn-primary">Add a student</a>
+  </div>
+
+</div>

@@ -1,0 +1,316 @@
+.ledger{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  position:relative;
+}
+
+.ledger-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.ledger-head h2{
+  font-family:var(--font-display);
+  font-size:22px;
+  font-weight:600;
+}
+
+.ledger-head p{
+  color:var(--ink-muted);
+  font-size:13.5px;
+  margin-top:4px;
+}
+
+.search-field{
+  position:relative;
+  min-width:280px;
+}
+
+.search-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  width:16px;
+  height:16px;
+  color:var(--ink-faint);
+}
+
+.search-field input{
+  width:100%;
+  padding:11px 36px 11px 40px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--line);
+  background:var(--paper-card);
+  font-size:14px;
+  color:var(--ink);
+}
+
+.search-field input:focus{
+  border-color:var(--accent);
+}
+
+.clear-btn{
+  position:absolute;
+  right:8px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  font-size:20px;
+  line-height:1;
+  color:var(--ink-faint);
+  cursor:pointer;
+  padding:4px;
+}
+
+/* Table */
+.table-wrap{
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  box-shadow:var(--shadow-card);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+th{
+  text-align:left;
+  padding:14px 18px;
+  background:var(--ink);
+  color:#C4CEE0;
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:0.6px;
+  font-weight:600;
+  user-select:none;
+}
+
+th.sortable{
+  cursor:pointer;
+}
+
+th.sortable:hover{
+  color:#fff;
+}
+
+.sort-arrow{
+  margin-left:4px;
+}
+
+.actions-col{
+  text-align:right;
+}
+
+td{
+  padding:14px 18px;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+  color:var(--ink);
+}
+
+tbody tr:last-child td{
+  border-bottom:none;
+}
+
+tbody tr:hover{
+  background:var(--paper);
+}
+
+.mono{
+  font-family:var(--font-mono);
+  color:var(--ink-muted);
+  font-variant-numeric:tabular-nums;
+}
+
+.name-cell{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:500;
+}
+
+.grade-badge{
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-mono);
+  font-weight:700;
+  font-size:11px;
+  flex-shrink:0;
+  color:#fff;
+  background:var(--ink-faint);
+}
+
+.grade-badge[data-grade="A"]{ background:var(--accent); }
+.grade-badge[data-grade="B"]{ background:var(--brass); }
+.grade-badge[data-grade="C"]{ background:var(--ink-600); }
+.grade-badge[data-grade="D"]{ background:#C97A3A; }
+.grade-badge[data-grade="F"]{ background:var(--garnet); }
+
+.icon-btn{
+  background:none;
+  border:1px solid var(--line);
+  color:var(--ink-muted);
+  padding:6px 12px;
+  border-radius:6px;
+  font-size:12.5px;
+  font-weight:500;
+  cursor:pointer;
+  margin-left:6px;
+  transition:0.15s;
+}
+
+.icon-btn:hover{
+  border-color:var(--accent);
+  color:var(--accent-600);
+}
+
+.icon-btn.danger:hover{
+  border-color:var(--garnet);
+  color:var(--garnet);
+  background:var(--garnet-100);
+}
+
+/* Pagination */
+.pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:16px;
+  border-top:1px solid var(--line);
+  font-size:13.5px;
+  color:var(--ink-muted);
+}
+
+.pagination button{
+  background:var(--paper);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:500;
+  color:var(--ink);
+}
+
+.pagination button:disabled{
+  opacity:0.4;
+  cursor:not-allowed;
+}
+
+.pagination button:not(:disabled):hover{
+  border-color:var(--accent);
+}
+
+/* States */
+.state-card{
+  background:var(--paper-card);
+  border:1px solid var(--line);
+  border-radius:var(--radius-md);
+  padding:48px;
+  text-align:center;
+  color:var(--ink-muted);
+}
+
+.state-card h3{
+  font-family:var(--font-display);
+  color:var(--ink);
+  margin-bottom:8px;
+  font-size:19px;
+}
+
+.btn-primary{
+  display:inline-block;
+  margin-top:14px;
+  background:var(--accent);
+  color:#fff;
+  padding:11px 20px;
+  border:none;
+  border-radius:var(--radius-sm);
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  cursor:pointer;
+}
+
+.btn-primary:hover{
+  background:var(--accent-600);
+}
+
+/* Toast */
+.toast{
+  position:fixed;
+  bottom:28px;
+  right:28px;
+  background:var(--ink);
+  color:#fff;
+  padding:12px 20px;
+  border-radius:var(--radius-sm);
+  font-size:13.5px;
+  box-shadow:var(--shadow-pop);
+  animation:toast-in 0.2s ease;
+}
+
+@keyframes toast-in{
+  from{ opacity:0; transform:translateY(8px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+@media (max-width:700px){
+  .table-wrap{ overflow-x:auto; }
+  table{ min-width:640px; }
+}
+
+/* Skeleton loading state — shows the table shape immediately instead of a
+   blank/spinner screen, so the page feels instant while data is in flight. */
+.skeleton-bar{
+  display:inline-block;
+  height:12px;
+  border-radius:6px;
+  background:linear-gradient(90deg, var(--line) 25%, #eef0ea 37%, var(--line) 63%);
+  background-size:400% 100%;
+  animation:skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer{
+  0%{ background-position:100% 50%; }
+  100%{ background-position:0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .skeleton-bar{ animation:none; }
+}
+
+/* Role badge — swaps the grade-badge concept for an admin/staff pill */
+.role-badge{
+  display:inline-block;
+  padding:4px 10px;
+  border-radius:999px;
+  font-size:11.5px;
+  font-weight:700;
+  letter-spacing:0.3px;
+  text-transform:uppercase;
+}
+
+.role-badge[data-role="ADMIN"]{
+  background:var(--brass-100);
+  color:var(--brass);
+}
+
+.role-badge[data-role="STAFF"]{
+  background:var(--accent-100);
+  color:var(--accent-600);
+}

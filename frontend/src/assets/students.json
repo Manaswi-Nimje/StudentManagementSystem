@@ -1,0 +1,67 @@
+{
+  "students": [
+    {
+      "id": "1",
+      "studname": "Aarav Sharma",
+      "course": "Computer Science",
+      "marks": 92.45,
+      "admissionDate": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "studname": "Priya Verma",
+      "course": "Information Technology",
+      "marks": 78.25,
+      "admissionDate": "2023-11-10"
+    },
+    {
+      "id": "3",
+      "studname": "Rohan Patil",
+      "course": "Electronics Engineering",
+      "marks": 85.8,
+      "admissionDate": "2024-02-20"
+    },
+    {
+      "id": "4",
+      "studname": "Sneha Kulkarni",
+      "course": "Mechanical Engineering",
+      "marks": 67.4,
+      "admissionDate": "2023-12-05"
+    },
+    {
+      "id": "5",
+      "studname": "Manas Joshi",
+      "course": "Artificial Intelligence",
+      "marks": 95.1,
+      "admissionDate": "2024-03-01"
+    },
+    {
+      "studname": "ABC",
+      "course": "CTech",
+      "marks": 98,
+      "admissionDate": "2003-09-05",
+      "id": "hvPcgGlC3bA"
+    },
+    {
+      "id": "d5EXw58vB4U",
+      "studname": "XYZ",
+      "course": "CSE",
+      "marks": 87,
+      "admissionDate": "2009-08-09"
+    },
+    {
+      "id": "2FTeEhCvKAQ",
+      "studname": "Afdgf",
+      "course": "ECE",
+      "marks": 67,
+      "admissionDate": "2026-06-09"
+    },
+    {
+      "id": "Rz4Rd4DyUMg",
+      "studname": "rfhjc",
+      "course": "ETC",
+      "marks": 99,
+      "admissionDate": "2026-06-20"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+<div class="profile-page">
+
+  <div class="profile-card">
+
+    <div class="card-head">
+      <div>
+        <h2>Profile lookup</h2>
+        <p>Look up a student by roll number, name, or course.</p>
+      </div>
+      <a routerLink="/dashboard/overview" class="back-link">← Dashboard</a>
+    </div>
+
+    <div class="search-box" *ngIf="!isDirectProfile">
+      <input
+        type="text"
+        placeholder="Roll number, name, or course…"
+        [(ngModel)]="searchText"
+        (keyup.enter)="searchStudent()"
+      >
+      <button (click)="searchStudent()">Search</button>
+    </div>
+
+    <div class="loading-row" *ngIf="loading">
+      <p>Looking that up…</p>
+    </div>
+
+    <div class="student-card" *ngIf="!loading && student">
+      <div class="student-head">
+        <span class="avatar">{{ initials(student.studName) }}</span>
+        <div>
+          <h3>{{ student.studName }}</h3>
+          <span class="grade-chip" [attr.data-grade]="gradeLetter(student.marks)">
+            Grade {{ gradeLetter(student.marks) }}
+          </span>
+        </div>
+      </div>
+
+      <dl class="detail-list">
+        <div>
+          <dt>Roll No.</dt>
+          <dd class="mono">#{{ student.id }}</dd>
+        </div>
+        <div>
+          <dt>Course</dt>
+          <dd>{{ student.course }}</dd>
+        </div>
+        <div>
+          <dt>Marks</dt>
+          <dd class="mono">{{ student.marks }} / 100</dd>
+        </div>
+        <div>
+          <dt>Admitted</dt>
+          <dd class="mono">{{ student.admissionDate }}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="state-card" *ngIf="!loading && notFound">
+      <h3>No record found</h3>
+      <p>Double-check the roll number or spelling and try again.</p>
+    </div>
+
+    <div class="state-card" *ngIf="!loading && error">
+      <h3>Couldn't reach the server</h3>
+      <p>Make sure the backend API is running, then try again.</p>
+    </div>
+
+    <div class="state-card muted" *ngIf="!loading && !student && !notFound && !error && !isDirectProfile && !searched">
+      <p>Search results will appear here.</p>
+    </div>
+
+  </div>
+
+</div>

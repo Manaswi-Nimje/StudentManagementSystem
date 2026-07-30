@@ -1,0 +1,139 @@
+<div class="landing">
+
+  <!-- Top navigation -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" routerLink="/">
+        <span class="brand-mark">GB</span>
+        <div class="brand-text">
+          <strong>Gradebook</strong>
+          <span>Student Records Portal</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a routerLink="/login" class="btn-ghost nav-btn-ghost">Log in</a>
+        <a routerLink="/register" class="btn-primary nav-btn-primary">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Registrar's office, digitized</span>
+      <h1>One ledger for every student record you keep.</h1>
+      <p>
+        Gradebook replaces the loose spreadsheets and paper files with a single,
+        secure portal for enrolment, marks and admissions — built for registrars,
+        coordinators and academic staff.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/register" class="btn-primary btn-lg">Create free account</a>
+        <a routerLink="/login" class="btn-ghost btn-lg">I already have an account</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><strong>Fast</strong><span>Search &amp; sort in real time</span></div>
+        <div class="trust-item"><strong>Secure</strong><span>Token-based staff login</span></div>
+        <div class="trust-item"><strong>Accurate</strong><span>Validated records, always</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="ledger-card">
+        <div class="ledger-card-head">
+          <span class="dot dot-a"></span><span class="dot dot-b"></span><span class="dot dot-c"></span>
+          <span class="ledger-card-title">Student ledger</span>
+        </div>
+        <div class="ledger-row" *ngFor="let r of [1,2,3,4]">
+          <span class="ledger-avatar" [attr.data-row]="r"></span>
+          <span class="ledger-line ledger-line-name"></span>
+          <span class="ledger-line ledger-line-course"></span>
+          <span class="ledger-badge">A</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features" id="features">
+    <div class="section-head">
+      <span class="eyebrow">What you get</span>
+      <h2>Everything a records office needs, nothing it doesn't.</h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card" *ngFor="let f of features">
+        <div class="feature-icon" [attr.data-icon]="f.icon"></div>
+        <h3>{{ f.title }}</h3>
+        <p>{{ f.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how" id="how-it-works">
+    <div class="section-head">
+      <span class="eyebrow">Getting started</span>
+      <h2>Up and running in three steps.</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step" *ngFor="let s of steps">
+        <span class="step-n">{{ s.n }}</span>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.body }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="cta">
+    <div class="cta-card">
+      <div>
+        <h2>Bring your student records into one place.</h2>
+        <p>Create your staff account and start managing the ledger today — no setup required.</p>
+      </div>
+      <a routerLink="/register" class="btn-primary btn-lg">Create free account</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand">
+            <span class="brand-mark">GB</span>
+            <span>Gradebook</span>
+          </div>
+          <p class="footer-tagline">One secure ledger for enrolment, marks and admissions — built for registrars and academic staff.</p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Product</span>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a routerLink="/register">Get started</a>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col-title">Account</span>
+          <a routerLink="/login">Log in</a>
+          <a routerLink="/register">Create account</a>
+          <a routerLink="/forgot-password">Forgot password</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Gradebook. Every mark, one ledger.</p>
+        <span class="footer-badge">Token-secured staff access</span>
+      </div>
+    </div>
+  </footer>
+
+</div>

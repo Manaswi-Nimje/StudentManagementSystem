@@ -1,0 +1,110 @@
+<div class="ledger">
+
+  <div class="ledger-head">
+    <div>
+      <h2>Student ledger</h2>
+      <p>{{ totalStudents }} student{{ totalStudents === 1 ? '' : 's' }} on record</p>
+    </div>
+
+    <div class="search-field">
+      <svg viewBox="0 0 20 20" fill="none" class="search-icon"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.6"/><path d="M17 17L13.5 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <input
+        type="text"
+        placeholder="Search by name or course…"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchChange()"
+      >
+      <button *ngIf="searchTerm" class="clear-btn" (click)="clearSearch()" aria-label="Clear search">×</button>
+    </div>
+  </div>
+
+  <div class="table-wrap" *ngIf="!loading && !error && students.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th class="sortable" (click)="toggleSort('id')">
+            Roll No.
+            <span class="sort-arrow" *ngIf="sortBy === 'id'">{{ direction === 'asc' ? '↑' : '↓' }}</span>
+          </th>
+          <th class="sortable" (click)="toggleSort('studName')">
+            Name
+            <span class="sort-arrow" *ngIf="sortBy === 'studName'">{{ direction === 'asc' ? '↑' : '↓' }}</span>
+          </th>
+          <th>Course</th>
+          <th class="sortable" (click)="toggleSort('marks')">
+            Marks
+            <span class="sort-arrow" *ngIf="sortBy === 'marks'">{{ direction === 'asc' ? '↑' : '↓' }}</span>
+          </th>
+          <th>Admitted</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of students; trackBy: trackByStudentId">
+          <td class="mono">#{{ s.id }}</td>
+          <td>
+            <div class="name-cell">
+              <span class="grade-badge" [attr.data-grade]="gradeLetter(s.marks)">{{ gradeLetter(s.marks) }}</span>
+              {{ s.studName }}
+            </div>
+          </td>
+          <td>{{ s.course }}</td>
+          <td class="mono">{{ s.marks }}</td>
+          <td class="mono">{{ s.admissionDate }}</td>
+          <td class="actions-col">
+            <button class="icon-btn" (click)="viewProfile(s.id)" title="View profile">View</button>
+            <button class="icon-btn" (click)="editStudent(s.id)" title="Edit">Edit</button>
+            <button class="icon-btn danger" (click)="deleteStudent(s.id!)" title="Delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="goToPage(-1)" [disabled]="page === 0">← Previous</button>
+      <span>Page {{ page + 1 }} of {{ totalPages }}</span>
+      <button (click)="goToPage(1)" [disabled]="page + 1 >= totalPages">Next →</button>
+    </div>
+  </div>
+
+  <div class="table-wrap skeleton-wrap" *ngIf="loading">
+    <table>
+      <thead>
+        <tr>
+          <th>Roll No.</th>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Marks</th>
+          <th>Admitted</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let _ of skeletonRows">
+          <td><span class="skeleton-bar" style="width:36px"></span></td>
+          <td><span class="skeleton-bar" style="width:140px"></span></td>
+          <td><span class="skeleton-bar" style="width:90px"></span></td>
+          <td><span class="skeleton-bar" style="width:40px"></span></td>
+          <td><span class="skeleton-bar" style="width:80px"></span></td>
+          <td><span class="skeleton-bar" style="width:100px"></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="state-card" *ngIf="!loading && error">
+    <h3>Couldn't reach the server</h3>
+    <p>Make sure the backend API is running, then try again.</p>
+    <button class="btn-primary" (click)="loadStudents()">Retry</button>
+  </div>
+
+  <div class="state-card" *ngIf="!loading && !error && students.length === 0">
+    <h3 *ngIf="searchTerm">No matches for "{{ searchTerm }}"</h3>
+    <h3 *ngIf="!searchTerm">No students yet</h3>
+    <p>{{ searchTerm ? 'Try a different name or course.' : 'Add your first student to start the ledger.' }}</p>
+    <a routerLink="/dashboard/add-student" class="btn-primary" *ngIf="!searchTerm">Add a student</a>
+  </div>
+
+  <div class="toast" *ngIf="toastMessage">{{ toastMessage }}</div>
+
+</div>
